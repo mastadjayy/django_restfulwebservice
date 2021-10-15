@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Drones application
     'apps.drones',
+    # Django Filters,
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,19 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# Rest Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':
+    'apps.drones.custompagination.LimitOffsetPaginationWithUpperBound',
+    'PAGE_SIZE': 4,
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ),
+}
 
 
 # Internationalization
