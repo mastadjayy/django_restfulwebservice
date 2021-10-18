@@ -19,4 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.drones.urls')),
+    # for the browsable API
+    # to display log in and log out views
+    path('api-auth/', include('rest_framework.urls')),
 ]
